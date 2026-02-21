@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+</head>
+
+<body>
+   <div class="bodycontiner">
+           
+{% if messages %}
+<p class="messages" >
+    {% for message in messages %}
+    <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+</p>
+{% endif %}
+     <div class="form-container">
+        <div class="messagebox" >
+        <form method="POST">
+            {% csrf_token %}
+
+            <h2>Login</h2>
+
+            <div class="form-group">
+                <label for="username">Enter Your Username</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Enter Your Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+
+            <button type="submit">Submit</button>
+
+        </form>
+</div>
+</div>  

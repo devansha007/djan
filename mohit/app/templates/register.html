@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'app/style.css' %}">
+</head>
+
+<body>
+   <div class="bodycontiner">
+    
+     <div class="form-container">
+        <div class="messagebox" style="padding: 20px 50px;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.349); font-size: 15px;color: bisque;">
+       
+{% if messages %}
+<p class="messages" >
+    {% for message in messages %}
+    <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+    {% endfor %}
+</p>
+{% endif %}
+    </div>
+        <form method="POST">
+            {% csrf_token %}
+
+            <h2>Register</h2>
+
+            <div class="form-group">
+                <label for="name">Enter Your First Name</label>
+                <input type="text" id="name" name="fname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Enter Your Last Name</label>
+                <input type="text" id="name" name="lname" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Enter Your Username</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Enter Your Password</label>
+                <input type="password" name="password" required>
+            </div>
+
+
+            <button type="submit">Submit</button>
+
+        </form>
+</div>
+</div>  
